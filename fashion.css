@@ -1,0 +1,79 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.hero-section img{
+    width: 99%;
+    height: 600px;
+    margin: 10px 10px 1px ;
+    border-radius: 5px;
+}
+h3{
+    margin-top: 10px;
+    color: black;
+    text-align: center;
+}
+.card-component{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 12px ; 
+    gap: 5px;
+    
+
+}
+.adidas {
+
+    transition: transform 0.3s;
+}
+.adidas:hover{
+    transform: translateY(-10px);
+}
+
+.card-component img{ 
+    height: 350px;
+    width: 350px;
+    margin: 10px ;
+    border-radius: 5px 5px 0px 0px;
+    border: 2px solid black;
+}
+.card-component p{
+    margin: 10px;
+    line-height: 1;
+    flex: 1;
+}
+.cc-para {
+    background-color: white;
+    padding: 10px;
+    border-radius: 0px 0px 5px 5px;
+    margin: -25px 10px 10px;
+    border: 2px solid black;
+}
+.cc-para button{
+
+    flex: 1;
+    margin: -10px 6px 10px 10px;
+    border-radius: 5px;
+    padding: 3px;
+    width: 310px;
+    font-weight: 600;
+    background-color: rgb(13, 156, 200);
+    border: 2px solid black;
+    cursor: pointer;
+}
+.cc-para button:hover{
+    background-color: aqua;
+    color: #2E073F;
+
+}
+
+.cc-para .pera{
+    font-weight: 700;
+}
+.cc-para .dis{
+    color: blue;
+
+}

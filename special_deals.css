@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.hero-section1 img{
+    width: 99%;
+    margin: 10px 10px 1px ;
+    border-radius: 10px;
+}
+.hero-section1{
+    margin-top: 70px;
+}
