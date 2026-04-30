@@ -41,7 +41,7 @@ class PortfolioBackground {
         const positions = new Float32Array(this.particleCount * 3);
         const colors = new Float32Array(this.particleCount * 3);
 
-        const color = new THREE.Color(this.isDark ? 0x3b82f6 : 0x60a5fa);
+        const color = new THREE.Color(this.isDark ? 0x3b82f6 : 0x2563eb);
 
         for (let i = 0; i < this.particleCount; i++) {
             positions[i * 3] = (Math.random() - 0.5) * 100;
@@ -69,7 +69,7 @@ class PortfolioBackground {
             size: 0.15,
             vertexColors: true,
             transparent: true,
-            opacity: this.isDark ? 0.55 : 0.26
+            opacity: this.isDark ? 0.55 : 0.44
         });
 
         const pointsMesh = new THREE.Points(geometry, material);
@@ -80,7 +80,7 @@ class PortfolioBackground {
         const lineMaterial = new THREE.LineBasicMaterial({
             color: color,
             transparent: true,
-            opacity: this.isDark ? 0.12 : 0.045
+            opacity: this.isDark ? 0.12 : 0.1
         });
         
         const lineGeometry = new THREE.BufferGeometry();

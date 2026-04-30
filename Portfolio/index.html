@@ -23,6 +23,7 @@
         }
         .glass-morphism {
             background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -80,14 +81,21 @@
         /* Light mode readability improvements */
         body:not(.dark) {
             color: #0f172a;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef4ff 100%);
+        }
+        body:not(.dark) #bg-canvas {
+            filter: saturate(130%) contrast(112%);
         }
         body:not(.dark) .glass-morphism {
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(15, 23, 42, 0.12);
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(99, 102, 241, 0.18);
+            box-shadow: 0 12px 28px rgba(30, 64, 175, 0.12);
         }
         body:not(.dark) nav a {
-            color: #1e293b;
+            color: #1f2937;
+        }
+        body:not(.dark) nav a:hover {
+            color: #2563eb;
         }
         body:not(.dark) .text-slate-500,
         body:not(.dark) .text-slate-400,
@@ -130,7 +138,34 @@
             color: #475569 !important;
         }
         body:not(.dark) .bg-gradient-to-r {
-            filter: saturate(115%) brightness(0.95);
+            filter: saturate(130%) brightness(0.9);
+        }
+        body:not(.dark) .text-white {
+            color: #0f172a !important;
+        }
+        body:not(.dark) .hover\:bg-white\/10:hover {
+            background-color: rgba(37, 99, 235, 0.1) !important;
+        }
+        @media (max-width: 767px) {
+            .mobile-menu-panel {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transform: translateY(-8px);
+                transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+            }
+            .mobile-menu-panel.menu-open {
+                max-height: 280px;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .resume-btn {
+                display: none;
+            }
+            main {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
     </style>
     <script type="importmap">
@@ -146,28 +181,42 @@
     <canvas id="bg-canvas"></canvas>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-morphism px-6 py-4 flex justify-between items-center transition-all duration-300">
-        <div class="text-xl font-bold tracking-tighter text-blue-500">RTM</div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-            <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
-            <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
-            <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
-            <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+    <nav class="fixed top-0 w-full z-50 glass-morphism px-6 py-4 transition-all duration-300">
+        <div class="flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter text-blue-500">RTM</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+               <a href="Teja_Murali_Java-FSD1.pdf"
+      download="Teja-Murali-Resume.pdf"
+      class="resume-btn px-8 py-3 border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 rounded-lg font-semibold transition-all hover:scale-105">
+     <i class="fas fa-download mr-2"></i> Resume
+    </a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle color theme">
+                    <i class="fas fa-sun text-yellow-400 dark:hidden"></i>
+                    <i class="fas fa-moon text-blue-400 hidden dark:block"></i>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-white/10" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu-panel">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
-        <div class="flex items-center space-x-4">
-           <a href="Teja_Murali_Java-FSD1.pdf"
-   download="Teja-Murali-Resume.pdf"
-   class="px-8 py-3 border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 rounded-lg font-semibold transition-all hover:scale-105">
-  <i class="fas fa-download mr-2"></i> Resume
-</a>
-            
-            
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors">
-                <i class="fas fa-sun text-yellow-400 dark:hidden"></i>
-                <i class="fas fa-moon text-blue-400 hidden dark:block"></i>
-            </button>
-            <button class="md:hidden p-2"><i class="fas fa-bars"></i></button>
+        <div id="mobile-menu-panel" class="mobile-menu-panel md:hidden mt-4 border-t border-white/10 pt-4">
+            <div class="flex flex-col gap-3 text-sm font-medium">
+                <a href="#about" class="mobile-nav-link hover:text-blue-400 transition-colors">About</a>
+                <a href="#skills" class="mobile-nav-link hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#projects" class="mobile-nav-link hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#experience" class="mobile-nav-link hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#contact" class="mobile-nav-link hover:text-blue-400 transition-colors">Contact</a>
+                <a href="Teja_Murali_Java-FSD1.pdf" download="Teja-Murali-Resume.pdf" class="mobile-nav-link px-4 py-2 border border-blue-500/40 text-blue-500 rounded-lg w-fit">
+                    <i class="fas fa-download mr-2"></i> Resume
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -455,9 +504,9 @@
 
     <footer class="py-12 border-t border-white/5 text-center text-slate-500">
         <div class="flex justify-center space-x-6 mb-6">
-            <a href="https://github.com/Tejamurali" target="_blank" class="hover:text-blue-500"><i class="fab fa-github text-2xl"></i></a>
-            <a href="https://www.linkedin.com/in/teja-murali-rajulapati" class="hover:text-blue-500"><i class="fab fa-linkedin text-2xl"></i></a>
-            <a href="Teja_Murali_Java-FSD.pdf" target="_blank" class="hover:text-blue-500"><i class="fas fa-file-pdf text-2xl"></i></a>
+            <a href="https://github.com/Tejamurali" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="hover:text-blue-500"><i class="fab fa-github text-2xl"></i></a>
+            <a href="https://www.linkedin.com/in/teja-murali-rajulapati" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="hover:text-blue-500"><i class="fab fa-linkedin text-2xl"></i></a>
+            <a href="Teja_Murali_Java-FSD.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download resume PDF" class="hover:text-blue-500"><i class="fas fa-file-pdf text-2xl"></i></a>
         </div>
         <p class="text-sm font-mono">Designed & Built by Teja Murali</p>
         <p class="text-xs mt-2">© 2024 Portfolio. All rights reserved.</p>
@@ -467,6 +516,9 @@
     <script>
         // Theme Toggle Logic
         const themeBtn = document.getElementById('theme-toggle');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link');
         const body = document.body;
         themeBtn.addEventListener('click', () => {
             body.classList.toggle('dark');
@@ -479,6 +531,18 @@
             // Dispatch event for three.js background to respond
             window.dispatchEvent(new CustomEvent('themeChanged', { detail: { isDark } }));
         });
+        if (mobileMenuBtn && mobileMenuPanel) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenuPanel.classList.toggle('menu-open');
+                mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+            });
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuPanel.classList.remove('menu-open');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
 
         // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
