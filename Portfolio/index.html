@@ -77,6 +77,61 @@
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
+        /* Light mode readability improvements */
+        body:not(.dark) {
+            color: #0f172a;
+        }
+        body:not(.dark) .glass-morphism {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+        body:not(.dark) nav a {
+            color: #1e293b;
+        }
+        body:not(.dark) .text-slate-500,
+        body:not(.dark) .text-slate-400,
+        body:not(.dark) .text-slate-300,
+        body:not(.dark) .text-slate-200 {
+            color: #334155 !important;
+        }
+        body:not(.dark) .bg-slate-800,
+        body:not(.dark) .bg-slate-800\/50 {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(148, 163, 184, 0.35) !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        }
+        body:not(.dark) .bg-white\/5 {
+            background-color: rgba(37, 99, 235, 0.08) !important;
+            border-color: rgba(37, 99, 235, 0.25) !important;
+        }
+        body:not(.dark) .border-white\/5,
+        body:not(.dark) .border-white\/10,
+        body:not(.dark) .border-white\/20 {
+            border-color: rgba(100, 116, 139, 0.3) !important;
+        }
+        body:not(.dark) .skill-tag {
+            background: rgba(37, 99, 235, 0.12);
+            color: #1d4ed8;
+            border: 1px solid rgba(29, 78, 216, 0.25);
+        }
+        body:not(.dark) input,
+        body:not(.dark) textarea {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            border-color: rgba(100, 116, 139, 0.35) !important;
+        }
+        body:not(.dark) #contact p,
+        body:not(.dark) #experience li {
+            color: #475569 !important;
+        }
+        body:not(.dark) footer {
+            border-top-color: rgba(100, 116, 139, 0.25) !important;
+            color: #475569 !important;
+        }
+        body:not(.dark) .bg-gradient-to-r {
+            filter: saturate(115%) brightness(0.95);
+        }
     </style>
     <script type="importmap">
     {
@@ -101,7 +156,7 @@
             <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
         </div>
         <div class="flex items-center space-x-4">
-           <a href="Teja_Murali_Java-FSD.pdf"
+           <a href="Teja_Murali_Java-FSD1.pdf"
    download="Teja-Murali-Resume.pdf"
    class="px-8 py-3 border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 rounded-lg font-semibold transition-all hover:scale-105">
   <i class="fas fa-download mr-2"></i> Resume
@@ -284,7 +339,7 @@
                         </div>
                         <div class="flex space-x-4 pt-4">
                             <a href="https://github.com/Tejamurali/Online-Books-Store/tree/main/onlinebookstore-master" class="px-4 py-2 bg-white/5 border border-white/10 rounded hover:bg-white/10 text-sm">View Code</a>
-                            <a href="#" class="px-4 py-2 bg-purple-600/20 text-purple-400 rounded hover:bg-purple-600/30 text-sm">Live Demo</a>
+                           
                         </div>
                     </div>
                 </div>
